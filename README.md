@@ -50,7 +50,7 @@ pip install -r requirements.txt
 ## Usage
 #### Training the Model
 ```bash
-python pretrain_model.py
+python pretraining_model.py
 ```
 #### Running the GUI
 ```bash
@@ -59,12 +59,14 @@ python main_gui.py
 ### Model Architecture
 ```python
 Sequential([
-    Conv2D(32, (3,3), activation='relu', input_shape=(32,32,3)),
-    MaxPooling2D(2,2),
-    Conv2D(64, (3,3), activation='relu'),
-    MaxPooling2D(2,2),
-    Flatten(),
-    Dense(64, activation='relu'),
-    Dense(10, activation='softmax')
+    layers.Input(shape=(32,32,3)), 
+    layers.Conv2D(32, (3,3), activation='relu'),
+    layers.MaxPooling2D(2,2),
+    layers.Conv2D(64, (3,3), activation='relu'),
+    layers.MaxPooling2D(2,2),
+    layers.Conv2D(64, (3,3), activation='relu'),
+    layers.Flatten(),
+    layers.Dense(64, activation='relu'),
+    layers.Dense(10, activation='softmax')
 ])
 ```
